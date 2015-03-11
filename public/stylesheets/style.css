@@ -2,14 +2,11 @@ body {
   padding: 1px;
 }
 
-.logoContainer {
-  background-color:black;
-  height:40px;
-  width:40px;
+.top10 {
+  margin-top: 10px;
 }
 
 .mainLogo {
-  float:left;
   height:50px;
   width:50px;
 }
