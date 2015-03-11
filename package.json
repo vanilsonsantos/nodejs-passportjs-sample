@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-passport",
+  "version": "0.0.1",
+  "description": "This is a sample application showing how to use passportjs",
+  "author" : "Vanilson M Santos <vanilson.m.santos@gmail.com",
+  "private": true,
+  "dependencies": {
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "express-load": "^1.1.14",
+    "supertest": "^0.15.0"
+  }
+}
