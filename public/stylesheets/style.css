@@ -1,8 +1,15 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 1px;
 }
 
-a {
-  color: #00B7FF;
+.logoContainer {
+  background-color:black;
+  height:40px;
+  width:40px;
+}
+
+.mainLogo {
+  float:left;
+  height:50px;
+  width:50px;
 }
