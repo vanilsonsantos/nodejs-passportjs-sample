@@ -6,16 +6,11 @@ module.exports = function(app) {
 
   app.get('/', home.index);
   app.get('/local', local.index);
-  app.post('/local', function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-      if (err) { return next(err); }
-      if (!user) { return res.redirect('/local'); }
-      req.logIn(user, function(err) {
-         if (err) { return next(err); }
-         return res.redirect('/');
-      });
-    })(req, res, next);
-  });
+  app.post('/local', passport.authenticate('local',
+                      { successRedirect: '/',
+                        failureRedirect: '/local',
+                        failureFlash: true })
+  );
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');

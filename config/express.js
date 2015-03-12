@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 module.exports = function(app) {
 
@@ -18,4 +19,6 @@ module.exports = function(app) {
   		secret: 'OurSuperSecretCookieSecret'
   }));
 
+  // Connect-flash middleware
+  app.use(flash());
 }

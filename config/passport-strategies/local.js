@@ -6,12 +6,10 @@ module.exports = new LocalStrategy(
         User.findOne({ username: username }, function(err, user) {
           if (err) { return done(err); }
           if (!user) {
-              console.log('User Not Found with username ' + username);
-              return done(null,false);
+              return done(null,false , { message: 'Incorrect username.' });
           }
           if (!isValidPassword(user, password)){
-              console.log('Invalid Password');
-              return done(null, false);
+              return done(null, false,  { message: 'Incorrect password.' });
           }
           return done(null, user);
         });

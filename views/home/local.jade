@@ -4,6 +4,8 @@ block content
   div(class="row")
     div(class="col-md-3")
     div(class="col-md-6 col-xs-12 col-sm-8") 
+      if message.length > 0
+        div(class="alert alert-warning") #{message}
       form(method="POST" action="/local" class="form-horizontal")
         fieldset
           legend Sign in

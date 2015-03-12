@@ -5,12 +5,12 @@ var load = require('express-load');
 var passport = require('passport');
 var mongoose = require('mongoose');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Database settings
 var dbConfig = require('./config/db-config')();
 var dbConnection = require('./init/db-connection')(dbConfig.url);
 dbConnection.connect();
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

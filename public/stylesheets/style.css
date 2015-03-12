@@ -6,6 +6,11 @@ body {
   margin-top: 10px;
 }
 
+.containerLogo {
+  display:inline-block;
+  margin-top:6px;
+}
+
 .mainLogo {
   float:left;
   height:50px;
@@ -13,8 +18,8 @@ body {
 }
 
 .containerLogoDescrption {
-  display:inline-block;
-  float:left;
+  color: black;
+  float:right;
   line-height:14px;
   margin-top:18px;
 }
