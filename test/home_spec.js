@@ -51,4 +51,14 @@ describe('Home Controller - ',function(){
             });
         });
     });
+
+    it('Must return succes route (/signup) when get /signup',function(done){
+        request
+        .get('/signup')
+        .end(function(err,res){
+          if(err) throw err;
+          expect(res.status).toBe(200);
+          done();
+        });
+    });
 });
