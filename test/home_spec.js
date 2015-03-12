@@ -7,6 +7,7 @@ describe('Home Controller - ',function(){
         request
         .get('/')
         .end(function(err, res){
+          if(err) throw err;
           expect(res.status).toBe(200);
           done();
         });
@@ -16,9 +17,38 @@ describe('Home Controller - ',function(){
         request
         .get('/local')
         .end(function(err,res){
+          if(err) throw err;
           expect(res.status).toBe(200);
           done();
         });
     });
 
+    it('Must return succes route (/) when post /local',function(done){
+        var user = { username : 'developer' , password : '010203' }
+        request
+        .post('/local')
+        .send(user)
+        .end(function(err,res){
+          if(err) throw err;
+          expect(res.headers.location).toBe('/');
+          done();
+        });
+    });
+
+    it('Must return succes route (/) when get /logout after login', function(done){
+        var user = { username : 'developer' , password : '010203' }
+        request
+        .post('/local')
+        .send(user)
+        .end(function(err,res){
+            if(err) throw err;
+            request
+            .get('/logout')
+            .end(function(err,res){
+              if(err) throw err;
+              expect(res.headers.location).toBe('/');
+              done();
+            });
+        });
+    });
 });

@@ -19,14 +19,25 @@ html
             span(class="icon-bar")
           a(href="/") 
             img(src="/images/padlock_logo.png" class="mainLogo")
+          div(class="containerLogoDescrption")
+            div Authentication
+            div Using passportjs
+          
               
         div(class="navbar-collapse collapse navbar-right")
           ul(class="nav navbar-nav")
-            li
-              a
-                span(class="text-primary") Strategies:
-            li
-              a(href="/local") Local   
+            unless logged
+              li
+                a
+                  span(class="text-primary") Strategies:
+              li
+                a(href="/local") Local  
+            if logged   
+              li
+                a
+                  span(class="text-primary") Hello, #{user}.
+              li
+                a(href="/logout") Log out 
     
     div(class="container")  
       div(class="jumbotron")
