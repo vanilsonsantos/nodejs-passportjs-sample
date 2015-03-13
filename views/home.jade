@@ -26,18 +26,20 @@ html
           
         div(class="navbar-collapse collapse navbar-right")
           ul(class="nav navbar-nav")
-            unless logged
+            unless user
               li
                 a
                   span(class="text-primary") Strategies:
               li
                 a(href="/local") Local  
-            if logged   
+            if user   
               li
-                a
-                  span(class="text-primary") Hello, #{user}.
-              li
-                a(href="/logout") Log out 
+                ul(class="list-inline top6")
+                  li
+                    span(class="text-primary") Hello, #{user.username}.
+                  li
+                    p(class="navbar-btn")
+                      a(href="/logout" class="btn btn-default btn-sm") Log out 
     
     div(class="container")  
       div(class="jumbotron")
