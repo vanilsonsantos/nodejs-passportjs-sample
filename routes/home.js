@@ -6,15 +6,15 @@ module.exports = function(app) {
   var signup = app.controllers.signup;
 
   app.get('/', home.index);
-  app.get('/local', local.index);
-  app.post('/local', passport.authenticate('local',
+  app.get('/login/local', local.index);
+  app.post('/login/local', passport.authenticate('local',
                       { successRedirect: '/',
-                        failureRedirect: '/local',
+                        failureRedirect: '/login/local',
                         failureFlash: true })
   );
+  app.get('/login/local/signup', signup.index);
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });
-  app.get('/signup', signup.index);
 }

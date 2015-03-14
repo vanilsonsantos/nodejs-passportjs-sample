@@ -4,10 +4,6 @@ module.exports = function(passport,app) {
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(function(req,res,next){
-      app.locals.user = req.user;
-      next();  
-  });
 
   passport.serializeUser(function(user, done) {
       console.log('serializing user: ' + user);

@@ -21,6 +21,7 @@ require('./config/express')(app);
 
 // Passportjs configuration
 require('./config/passport')(passport,app);
+require('./middlewares/authentication')(app);
 
 load('models').then('controllers').then('routes').into(app);
 
@@ -55,11 +56,8 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
-
 app.listen(3000,function(){
     console.log('Node server running..');
 });
-
 
 module.exports = app;
