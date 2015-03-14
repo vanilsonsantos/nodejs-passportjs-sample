@@ -7,12 +7,17 @@ module.exports = function(app) {
 
   app.get('/', home.index);
   app.get('/login/local', local.index);
-  app.post('/login/local', passport.authenticate('local',
+  app.post('/login/local', passport.authenticate('login',
                       { successRedirect: '/',
                         failureRedirect: '/login/local',
                         failureFlash: true })
   );
   app.get('/login/local/signup', signup.index);
+  app.post('/login/local/signup', passport.authenticate('signup',
+                      { successRedirect: '/',
+                        failureRedirect: '/login/local/signup',
+                        failureFlash: true })
+  );
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');

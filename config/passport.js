@@ -1,4 +1,5 @@
 var local = require('./passport-strategies/local');
+var localSignup = require('./passport-strategies/local-signup');
 
 module.exports = function(passport,app) {
 
@@ -18,5 +19,6 @@ module.exports = function(passport,app) {
       });
   });
 
-  passport.use(local);
+  passport.use('login',local);
+  passport.use('signup',localSignup);
 }

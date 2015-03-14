@@ -1,11 +1,21 @@
 module.exports = function() {
   var mongoose = require('mongoose');
   var Schema = mongoose.Schema;
+  var bcrypt   = require('bcrypt-nodejs');
 
   var user = new Schema({
       username: String,
-      password: String
+      password: String,
+      gender: String
   });
+
+  user.methods.generateHash = function(password,next){
+      return bcrypt.hash(password, null, null, next);
+  };
+
+  user.methods.isValidPassword = function(password,hash,next) {
+      return bcrypt.compare(password,hash,next);
+  };
 
   return mongoose.model('users',user);
 }
