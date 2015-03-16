@@ -5,8 +5,7 @@ module.exports = function() {
 
   var user = new Schema({
       username: String,
-      password: String,
-      gender: String
+      password: String
   });
 
   user.methods.generateHash = function(password,next){

@@ -8,13 +8,14 @@ module.exports = new LocalStrategy(
           if (!user) {
               return done(null,false , { message: 'Incorrect username.' });
           }
-          if (!isValidPassword(user, password)){
-              return done(null, false,  { message: 'Incorrect password.' });
-          }
-          return done(null, user);
+          user.isValidPassword(password, user.password, function(err,res) {
+              if(err) throw err;
+              if(!res) {
+                return done(null, false,  { message: 'Incorrect password.' });
+              } else {
+                return done(null, user);
+              }
+          });
         });
-        var isValidPassword = function(user, password){
-            return ((user.password == password) ? true : false );
-        }
     }
 );

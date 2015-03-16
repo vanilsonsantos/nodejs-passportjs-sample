@@ -7,13 +7,13 @@ module.exports = function(app) {
 
   app.get('/', home.index);
   app.get('/login/local', local.index);
-  app.post('/login/local', passport.authenticate('login',
+  app.post('/login/local', passport.authenticate('local-login',
                       { successRedirect: '/',
                         failureRedirect: '/login/local',
                         failureFlash: true })
   );
   app.get('/login/local/signup', signup.index);
-  app.post('/login/local/signup', passport.authenticate('signup',
+  app.post('/login/local/signup', passport.authenticate('local-signup',
                       { successRedirect: '/',
                         failureRedirect: '/login/local/signup',
                         failureFlash: true })

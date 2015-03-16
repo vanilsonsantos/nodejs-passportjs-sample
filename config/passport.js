@@ -18,7 +18,6 @@ module.exports = function(passport,app) {
         done(err, user);
       });
   });
-
-  passport.use('login',local);
-  passport.use('signup',localSignup);
+  passport.use('local-login',local);
+  passport.use('local-signup',localSignup);
 }

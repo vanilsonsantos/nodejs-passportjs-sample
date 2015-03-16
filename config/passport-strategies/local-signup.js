@@ -11,7 +11,10 @@ module.exports = new LocalStrategy({
             if(err) return done(err);
 
             if(user) {
-              return done(null,false);
+                return done(null, false, { message : 'User already exists.' });
+            }
+            if(password != req.body.samepassword) {
+                return done(null, false, { message : 'Passwords must be the same.' });
             }else {
                 var newLocalUser = new User();
                 newLocalUser.username = req.body.username;
