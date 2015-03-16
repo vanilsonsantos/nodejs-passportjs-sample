@@ -28,3 +28,19 @@ body {
   height:15px;
   width:15px;
 }
+
+.containerError {
+  background-color: #fade01;
+  border:solid #6b6a6a 1px;
+}
+
+.imgError {
+  height:50px;
+  width:50px;
+}
+
+.error {
+  color:black;
+  font-size:16px;
+  margin-left:8px;
+}

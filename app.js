@@ -3,7 +3,6 @@ var path = require('path');
 var app = express();
 var load = require('express-load');
 var passport = require('passport');
-var mongoose = require('mongoose');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -23,38 +22,11 @@ require('./config/express')(app);
 require('./config/passport')(passport,app);
 require('./middlewares/authentication')(app);
 
+// Loading modules
 load('models').then('controllers').then('routes').into(app);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+// Errors
+require('./middlewares/errors')(app);
 
 app.listen(3000,function(){
     console.log('Node server running..');
