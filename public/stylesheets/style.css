@@ -2,6 +2,11 @@ body {
   padding: 1px;
 }
 
+.center {
+  float:none;
+  margin:0 auto 0 auto;
+}
+
 .top6 {
   margin-top: 6px;
 }
@@ -43,4 +48,63 @@ body {
   color:black;
   font-size:16px;
   margin-left:8px;
+}
+
+.rightArrow {
+  background-image: url("../images/right_arrow.png");
+  float:left;
+  height:50px;
+  margin:40px auto 0 auto;
+  width:50px;
+}
+
+.downArrow {
+  background-image: url("../images/down_arrow.png");
+  display:none;
+  float:none;
+  height:50px;
+  margin:0 auto 0 auto;
+  width:50px;
+}
+
+.user {
+  background-image: url("../images/user.png");
+  float:left;
+  height: 128px;
+  margin:0 auto 0 auto;
+  width:128px;
+}
+
+.strategies {
+  background-image: url("../images/chess.png");
+  float:left;
+  height: 128px;
+  margin:0 auto 0 auto;
+  width:128px;
+}
+
+.userlogged {
+  background-image: url("../images/screen_user_logged.png");
+  float:left;
+  height: 128px;
+  margin:0 auto 0 5px;
+  width:128px;
+}
+
+@media (max-width: 768px) {
+  .user, .strategies{
+    float:none;
+  }
+
+  .userlogged{
+    float:none;
+    margin:5px auto 0 auto;
+  }
+
+  .downArrow {
+    display: inherit;
+  }
+  .rightArrow {
+    display: none;
+  }
 }
