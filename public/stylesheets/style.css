@@ -7,6 +7,10 @@ body {
   margin:0 auto 0 auto;
 }
 
+.left10 {
+  margin-left:10px;
+}
+
 .top6 {
   margin-top: 6px;
 }
@@ -29,7 +33,7 @@ body {
   margin-top:18px;
 }
 
-.database {
+.database, .facebook {
   height:15px;
   width:15px;
 }

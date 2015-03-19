@@ -1,13 +1,12 @@
 var express = require('express');
-var path = require('path');
-var app = express();
-var load = require('express-load');
-var passport = require('passport');
+var app     = express();
+var path    = require('path');
+var load    = require('express-load');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database settings
-var dbConfig = require('./config/db-config')();
+var dbConfig     = require('./config/db-config')();
 var dbConnection = require('./init/db-connection')(dbConfig.url);
 dbConnection.connect();
 
@@ -19,7 +18,7 @@ app.set('view engine', 'jade');
 require('./config/express')(app);
 
 // Passportjs configuration
-require('./config/passport')(passport,app);
+require('./config/passport')(app);
 require('./middlewares/authentication')(app);
 
 // Loading modules

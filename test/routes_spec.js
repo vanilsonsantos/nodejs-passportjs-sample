@@ -1,30 +1,30 @@
 var app = require('../app')
-    , request = require('supertest')(app);
+  , request = require('supertest')(app);
 
 describe('Route tests - ',function(){
 
-    describe('Home',function(){
+    describe('Home - ',function(){
         it('Must return the status 200 when get /',function(done){
             request
             .get('/')
             .end(function(err, res){
-              if(err) throw err;
-              expect(res.status).toBe(200);
-              done();
+                if(err) throw err;
+                expect(res.status).toBe(200);
+                done();
             });
         });
     });
 
-    describe('Login local strategy',function(){
+    describe('Login local strategy - ',function(){
 
-        describe('Registering a new user',function(){
+        describe('Registering a new user - ',function(){
             it('Must return the status 200 when get /login/local/signup',function(done){
                 request
                 .get('/login/local/signup')
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.status).toBe(200);
-                  done();
+                    if(err) throw err;
+                    expect(res.status).toBe(200);
+                    done();
                 });
             });
 
@@ -34,9 +34,9 @@ describe('Route tests - ',function(){
                 .post('/login/local/signup')
                 .send(user)
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.headers.location).toBe('/login/local/signup');
-                  done();
+                    if(err) throw err;
+                    expect(res.headers.location).toBe('/login/local/signup');
+                    done();
                 });
             });
 
@@ -46,9 +46,9 @@ describe('Route tests - ',function(){
                 .post('/login/local/signup')
                 .send(user)
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.headers.location).toBe('/');
-                  done();
+                    if(err) throw err;
+                    expect(res.headers.location).toBe('/');
+                    done();
                 });
             });
 
@@ -58,33 +58,32 @@ describe('Route tests - ',function(){
                 .post('/login/local/signup')
                 .send(user)
                 .end(function(err,res){
-                  if(err) throw err;
-                  request
-                  .post('/login/local/signup')
-                  .send(user)
-                  .end(function(err,res){
                     if(err) throw err;
-                    expect(res.headers.location).toBe('/login/local/signup');
-                    done();
+                    request
+                    .post('/login/local/signup')
+                    .send(user)
+                    .end(function(err,res){
+                        if(err) throw err;
+                        expect(res.headers.location).toBe('/login/local/signup');
+                        done();
                   });
                 });
             });
 
             afterEach(function(){
-                require('mongoose').model('users').findOne({ username : 'newuser' }).remove().exec();
-                require('mongoose').model('users').findOne({ username : 'registereduser' }).remove().exec();
+                require('mongoose').model('users').findOne({ 'local.username' : 'newuser' }).remove().exec();
+                require('mongoose').model('users').findOne({ 'local.username' : 'registereduser' }).remove().exec();
             });
         });
 
-        describe('Logging a user',function(){
-
+        describe('Logging a user - ',function(){
             it('Must return the status 200 when get /login/local',function(done){
                 request
                 .get('/login/local')
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.status).toBe(200);
-                  done();
+                    if(err) throw err;
+                    expect(res.status).toBe(200);
+                    done();
                 });
             });
 
@@ -94,15 +93,15 @@ describe('Route tests - ',function(){
                 .post('/login/local/signup')
                 .send(user)
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.headers.location).toBe('/');
-                  request
-                  .post('/login/local')
-                  .send(user)
-                  .end(function(err,res){
                     if(err) throw err;
                     expect(res.headers.location).toBe('/');
-                    done();
+                    request
+                    .post('/login/local')
+                    .send(user)
+                    .end(function(err,res){
+                        if(err) throw err;
+                        expect(res.headers.location).toBe('/');
+                        done();
                   });
                 });
 
@@ -114,40 +113,52 @@ describe('Route tests - ',function(){
                 .post('/login/local')
                 .send(user)
                 .end(function(err,res){
-                  if(err) throw err;
-                  expect(res.headers.location).toBe('/login/local');
-                  done();
+                    if(err) throw err;
+                    expect(res.headers.location).toBe('/login/local');
+                    done();
                 });
             });
 
             afterEach(function(){
-                require('mongoose').model('users').findOne({ username : 'loging' }).remove().exec();
+                require('mongoose').model('users').findOne({ 'local.username' : 'loging' }).remove().exec();
             });
 
         });
     });
 
-    describe('Logout',function(){
+    describe('Facebook strategy - ',function(){
+        it('Must return the status 302 when get /login/facebook',function(done){
+            request
+            .get('/login/facebook/enter')
+            .end(function(err, res){
+                if(err) throw err;
+                expect(res.status).toBe(302);
+                done();
+            });
+        });
+    });
+
+    describe('Logout - ',function(){
         it('Must return succes route (/) when get /logout after login', function(done){
             var user = { username : 'userlogged' , password : 'passwordlogged' , samepassword : 'passwordlogged' }
             request
             .post('/login/local/signup')
             .send(user)
             .end(function(err,res){
-              if(err) throw err;
-              expect(res.headers.location).toBe('/');
-              request
-              .get('/logout')
-              .end(function(err,res){
                 if(err) throw err;
                 expect(res.headers.location).toBe('/');
-                done();
+                request
+                .get('/logout')
+                .end(function(err,res){
+                    if(err) throw err;
+                    expect(res.headers.location).toBe('/');
+                    done();
               });
             });
         });
 
         afterEach(function(){
-            require('mongoose').model('users').findOne({ username : 'userlogged' }).remove().exec();
+            require('mongoose').model('users').findOne({ 'local.username' : 'userlogged' }).remove().exec();
         })
     });
 });

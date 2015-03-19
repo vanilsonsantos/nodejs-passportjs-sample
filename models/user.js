@@ -1,11 +1,18 @@
 module.exports = function() {
   var mongoose = require('mongoose');
-  var Schema = mongoose.Schema;
+  var Schema   = mongoose.Schema;
   var bcrypt   = require('bcrypt-nodejs');
 
   var user = new Schema({
-      username: String,
-      password: String
+      local : {
+          username : String,
+          password : String
+      },
+      facebook : {
+          id    : Number,
+          token : String,
+          username  : String
+      }
   });
 
   user.methods.generateHash = function(password,next){

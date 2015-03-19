@@ -33,12 +33,16 @@ html
               li
                 a(href="/login/local")
                   img(src="/images/database.png" class="database")
-                  span Local  
+                  span Local 
+              li
+                a(href="/login/facebook/enter")
+                  img(src="/images/facebook.png" class="facebook")
+                  span Facebook 
             if user   
               li
                 ul(class="list-inline top6")
                   li
-                    span(class="text-primary") Hello, #{user.username}.
+                    span(class="text-primary left10") Hello, #{user}.
                   li
                     p(class="navbar-btn")
                       a(href="/logout" class="btn btn-default btn-sm") Log out 
