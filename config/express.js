@@ -4,7 +4,6 @@ var session      = require('express-session');
 var flash        = require('connect-flash');
 
 module.exports = function(app) {
-
   // Body parser
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));

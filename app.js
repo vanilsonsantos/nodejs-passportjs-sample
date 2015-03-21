@@ -28,7 +28,7 @@ load('models').then('controllers').then('routes').into(app);
 require('./middlewares/errors')(app);
 
 app.listen(3000,function(){
-    console.log('Node server running..');
+  console.log('Node server running..');
 });
 
 module.exports = app;
