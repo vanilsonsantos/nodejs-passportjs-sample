@@ -31,7 +31,7 @@ html
                 a
                   span(class="text-primary") Strategies:
               li
-                a(href="/login/local")
+                a(id="local" href="/login/local")
                   img(src="/images/database.png" class="database")
                   span Local 
               li
@@ -42,10 +42,12 @@ html
               li
                 ul(class="list-inline top6")
                   li
-                    span(class="text-primary left10") Hello, #{user}.
+                    span(class="text-primary left10") Hello, 
+                      span(id="userlogged") #{user}
+                      span .
                   li
                     p(class="navbar-btn")
-                      a(href="/logout" class="btn btn-default btn-sm") Log out 
+                      a(id="logout" href="/logout" class="btn btn-default btn-sm") Log out 
     
     div(class="container")  
       div(class="jumbotron")

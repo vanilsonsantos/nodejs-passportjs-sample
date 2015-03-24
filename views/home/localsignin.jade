@@ -5,7 +5,7 @@ block content
     div(class="col-md-3")
     div(class="col-md-6 col-xs-12 col-sm-12") 
       if message.length > 0
-        div(class="alert alert-warning") #{message}
+        div(id="loginMessage" class="alert alert-warning") #{message}
       form(method="POST" action="/login/local" class="form-horizontal")
         fieldset
           legend Sign in
@@ -22,7 +22,7 @@ block content
                   span(class="glyphicon glyphicon-lock")
                 input(name="password" type="password" class="form-control" placeholder="Password")
                 span(class="input-group-btn")
-                  input(type="submit" class="btn btn-primary pull-right" value="Log in")
+                  input(type="submit" name="login" class="btn btn-primary pull-right" value="Log in")
         fieldset
           legend(class="h6")
             a(href="/login/local/signup" class="text-primary") Don't you have a account? Sign up here!      

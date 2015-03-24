@@ -1,6 +1,6 @@
 var passport    = require('passport');
-var local       = require('./passport-strategies/local');
-var localSignup = require('./passport-strategies/local-signup');
+var local       = require('./passport-strategies/localsignin');
+var localSignup = require('./passport-strategies/localsignup');
 var facebook    = require('./passport-strategies/facebook');
 
 module.exports = function(app) {

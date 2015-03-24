@@ -16,10 +16,10 @@ module.exports = new LocalStrategy({
             }else {
               var newLocalUser = new User();
               newLocalUser.local.username = req.body.username;
-              newLocalUser.generateHash(req.body.password,function(err, hash){
+              newLocalUser.generateHash(req.body.password, function(err, hash) {
                 if (err) throw err;
                 newLocalUser.local.password = hash;
-                newLocalUser.save(function(err){
+                newLocalUser.save(function(err) {
                   if (err) throw err;
                   req.session.strategy = 'local';
                   return done(null, newLocalUser);

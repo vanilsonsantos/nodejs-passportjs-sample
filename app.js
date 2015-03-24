@@ -6,8 +6,8 @@ var load    = require('express-load');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database settings
-var dbConfig     = require('./config/db-config')();
-var dbConnection = require('./init/db-connection')(dbConfig.url);
+var dbConfig     = require('./config/dbconfig')();
+var dbConnection = require('./init/dbconnection')(dbConfig.url);
 dbConnection.connect();
 
 // view engine setup
